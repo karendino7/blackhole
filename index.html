@@ -1,0 +1,902 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BLACK HOLES | دنیای سیاه‌چاله‌ها</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    --blue: #31baff;
+    --purple: #9b69ff;
+    --dark: #050610;
+    --card: rgba(15,20,40,.78);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Vazirmatn', sans-serif;
+    background: var(--dark);
+    color: white;
+    line-height: 2;
+    overflow-x: hidden;
+}
+
+/* پس زمینه فضایی */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background:
+      url("https://upload.wikimedia.org/wikipedia/commons/4/4f/Black_hole_-_Messier_87_crop_max_res.jpg")
+      center center / cover no-repeat;
+    filter: brightness(.22);
+    transform: scale(1.04);
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+        180deg,
+        rgba(3,5,18,.45),
+        #050610 85%
+    );
+}
+
+/* هدر */
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 12px 7%;
+    background: rgba(3,5,18,.82);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(49,186,255,.2);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: 800;
+    color: var(--blue);
+    direction: ltr;
+    white-space: nowrap;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 22px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #ddd;
+    font-size: 13px;
+    transition: .3s;
+}
+
+nav a:hover {
+    color: var(--blue);
+}
+
+/* صفحه اصلی */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 120px 20px 70px;
+}
+
+.hero h1 {
+    font-size: clamp(45px, 8vw, 90px);
+    direction: ltr;
+    line-height: 1.3;
+    color: white;
+    text-shadow: 0 0 30px #278dff;
+    animation: appear 1.5s ease;
+}
+
+.hero h2 {
+    color: var(--blue);
+    font-size: 23px;
+    margin-top: 15px;
+}
+
+.hero p {
+    max-width: 650px;
+    color: #c6cce0;
+    margin: 20px auto;
+}
+
+.main-btn {
+    display: inline-block;
+    padding: 12px 32px;
+    margin-top: 20px;
+    border-radius: 30px;
+    background: linear-gradient(90deg,#137fd5,#7845e8);
+    color: white;
+    text-decoration: none;
+    box-shadow: 0 0 25px #277fff55;
+    transition: .3s;
+}
+
+.main-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 35px #278dff;
+}
+
+@keyframes appear {
+    from {opacity: 0; transform: translateY(30px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+/* بخش ها */
+
+section {
+    padding: 100px 9%;
+    scroll-margin-top: 70px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-title h2 {
+    font-size: 34px;
+    color: var(--blue);
+}
+
+.section-title p {
+    color: #aeb5ca;
+    font-size: 14px;
+}
+
+.content {
+    max-width: 1050px;
+    margin: auto;
+}
+
+.card {
+    background: var(--card);
+    border: 1px solid rgba(49,186,255,.2);
+    border-radius: 18px;
+    padding: 27px;
+    backdrop-filter: blur(12px);
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    border-color: var(--blue);
+    box-shadow: 0 10px 35px #178dff20;
+}
+
+.card h3 {
+    color: var(--blue);
+    margin-bottom: 12px;
+    font-size: 20px;
+}
+
+.card p {
+    color: #d0d5e5;
+    font-size: 14px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
+    gap: 20px;
+}
+
+.icon {
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+
+/* ویدئو */
+
+.video-box {
+    max-width: 850px;
+    margin: auto;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--blue);
+    box-shadow: 0 0 35px #168bff30;
+    background: #000;
+}
+
+.video-box iframe {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16/9;
+    border: 0;
+}
+
+/* فرمول */
+
+.formula {
+    direction: ltr;
+    text-align: center;
+    font-size: 25px;
+    color: #70d7ff;
+    background: #0a1830;
+    border: 1px solid #238bd7;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+/* تصویر */
+
+.space-image {
+    width: 100%;
+    max-width: 800px;
+    display: block;
+    margin: 30px auto;
+    border-radius: 18px;
+    border: 1px solid #398cff;
+    box-shadow: 0 0 35px #227bff35;
+}
+
+/* حقایق */
+
+.fact {
+    border-right: 3px solid var(--purple);
+    padding: 15px 20px;
+    margin: 15px 0;
+    background: rgba(120,70,255,.08);
+    border-radius: 8px;
+}
+
+/* فوتر */
+
+footer {
+    text-align: center;
+    padding: 35px 15px;
+    background: #03040c;
+    border-top: 1px solid #1c3357;
+    color: #8993ac;
+    font-size: 13px;
+}
+
+footer span {
+    color: var(--blue);
+}
+
+/* نمایش موبایل */
+
+@media(max-width:750px) {
+    nav {
+        flex-direction: column;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px 16px;
+    }
+
+    nav a {
+        font-size: 11px;
+    }
+
+    header {
+        padding: 10px;
+    }
+
+    .hero h1 {
+        font-size: 43px;
+    }
+
+    section {
+        padding: 75px 6%;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<nav>
+    <div class="logo">BLACK HOLES</div>
+
+    <ul>
+        <li><a href="#home">خانه</a></li>
+        <li><a href="#about">سیاه‌چاله چیست؟</a></li>
+        <li><a href="#formation">تشکیل</a></li>
+        <li><a href="#types">انواع</a></li>
+        <li><a href="#physics">فیزیک</a></li>
+        <li><a href="#chemistry">شیمی</a></li>
+        <li><a href="#video">ویدئو</a></li>
+    </ul>
+</nav>
+</header>
+
+<!-- صفحه اول -->
+
+<div class="hero" id="home">
+
+    <h1>BLACK HOLES</h1>
+
+    <h2>به دنیای مرموز سیاه‌چاله‌ها خوش آمدید</h2>
+
+    <p>
+        جایی که گرانش بر نور غلبه می‌کند،
+        زمان متفاوت می‌گذرد و قوانین طبیعت
+        به عجیب‌ترین شکل خود ظاهر می‌شوند.
+    </p>
+
+    <a href="#about" class="main-btn">
+        کشف دنیای سیاه‌چاله‌ها
+    </a>
+
+</div>
+
+<!-- معرفی -->
+
+<section id="about">
+
+<div class="section-title">
+    <h2>سیاه‌چاله چیست؟</h2>
+    <p>What is a Black Hole?</p>
+</div>
+
+<div class="content card">
+
+    <p>
+        سیاه‌چاله ناحیه‌ای در فضا است که مقدار بسیار
+        زیادی جرم در حجم بسیار کوچکی متمرکز شده است.
+        به همین دلیل گرانش آن فوق‌العاده قدرتمند است.
+    </p>
+
+    <br>
+
+    <p>
+        گرانش سیاه‌چاله به اندازه‌ای قوی است که پس از
+        عبور از مرزی به نام افق رویداد، حتی نور نیز
+        نمی‌تواند از آن خارج شود.
+    </p>
+
+    <br>
+
+    <p>
+        برخلاف تصور، سیاه‌چاله یک سوراخ واقعی در فضا
+        نیست؛ بلکه یک جرم آسمانی بسیار فشرده است.
+    </p>
+
+</div>
+</section>
+
+<!-- ساختار -->
+
+<section>
+
+<div class="section-title">
+    <h2>ساختار سیاه‌چاله</h2>
+    <p>Anatomy of a Black Hole</p>
+</div>
+
+<div class="grid content">
+
+    <div class="card">
+        <div class="icon">⚫</div>
+        <h3>تکینگی</h3>
+        <p>
+            در نظریه نسبیت عام، مرکز سیاه‌چاله به صورت
+            ناحیه‌ای با چگالی بسیار زیاد و تکینگی
+            توصیف می‌شود. ماهیت واقعی مرکز هنوز مشخص نیست.
+        </p>
+    </div>
+
+    <div class="card">
+        <div class="icon">🌀</div>
+        <h3>افق رویداد</h3>
+        <p>
+            مرزی فرضی که پس از عبور از آن،
+            هیچ اطلاعات یا نوری نمی‌تواند به بیرون برسد.
+        </p>
+    </div>
+
+    <div class="card">
+        <div class="icon">🔥</div>
+        <h3>قرص برافزایشی</h3>
+        <p>
+            گاز و مواد داغی که اطراف سیاه‌چاله می‌چرخند
+            و بر اثر اصطکاک و فرایندهای دیگر بسیار داغ
+            و درخشان می‌شوند.
+        </p>
+    </div>
+
+    <div class="card">
+        <div class="icon">✨</div>
+        <h3>جت‌های نسبیتی</h3>
+        <p>
+            بعضی سیاه‌چاله‌های فعال می‌توانند
+            فواره‌هایی از ذرات پرانرژی را در راستای
+            محور چرخش خود به بیرون پرتاب کنند.
+        </p>
+    </div>
+
+</div>
+</section>
+
+<!-- تشکیل -->
+
+<section id="formation">
+
+<div class="section-title">
+    <h2>سیاه‌چاله چگونه تشکیل می‌شود؟</h2>
+    <p>Formation of Black Holes</p>
+</div>
+
+<div class="content">
+
+    <img class="space-image"
+    src="https://science.nasa.gov/wp-content/uploads/2023/09/black-hole-illustration.jpg"
+    alt="تصویر هنری سیاه چاله">
+
+    <div class="card">
+        <h3>۱. تولد یک ستاره بزرگ</h3>
+        <p>
+            ستاره‌های پرجرم از ابرهای گاز و غبار
+            تشکیل می‌شوند. در هسته آن‌ها واکنش‌های
+            همجوشی هسته‌ای انرژی تولید می‌کند.
+        </p>
+    </div>
+
+    <br>
+
+    <div class="card">
+        <h3>۲. تمام شدن سوخت هسته‌ای</h3>
+        <p>
+            در پایان عمر بعضی ستاره‌های بسیار پرجرم،
+            سوخت هسته‌ای هسته کاهش می‌یابد و فشار
+            رو به بیرون دیگر نمی‌تواند با گرانش
+            به خوبی مقابله کند.
+        </p>
+    </div>
+
+    <br>
+
+    <div class="card">
+        <h3>۳. رمبش هسته</h3>
+        <p>
+            هسته ستاره تحت تأثیر گرانش به شدت
+            فشرده می‌شود.
+        </p>
+    </div>
+
+    <br>
+
+    <div class="card">
+        <h3>۴. تشکیل سیاه‌چاله</h3>
+        <p>
+            اگر جرم هسته به اندازه کافی زیاد باشد،
+            رمبش ادامه پیدا می‌کند و سیاه‌چاله
+            ستاره‌ای شکل می‌گیرد. در بسیاری از موارد،
+            این فرایند با انفجار ابرنواختری همراه است.
+        </p>
+    </div>
+
+    <br>
+
+    <div class="card">
+        <h3>نکته علمی مهم</h3>
+        <p>
+            همه سیاه‌چاله‌ها الزاماً از این مسیر تشکیل
+            نمی‌شوند. منشأ سیاه‌چاله‌های کلان‌جرم
+            هنوز یکی از موضوعات پژوهشی مهم اخترفیزیک است.
+        </p>
+    </div>
+
+</div>
+</section>
+
+<!-- انواع -->
+
+<section id="types">
+
+<div class="section-title">
+    <h2>انواع سیاه‌چاله‌ها</h2>
+    <p>Types of Black Holes</p>
+</div>
+
+<div class="grid content">
+
+    <div class="card">
+        <div class="icon">🌑</div>
+        <h3>سیاه‌چاله ستاره‌ای</h3>
+        <p>
+            از فروپاشی هسته ستاره‌های پرجرم تشکیل
+            می‌شود و جرمی چند برابر جرم خورشید دارد.
+        </p>
+    </div>
+
+    <div class="card">
+        <div class="icon">🌌</div>
+        <h3>سیاه‌چاله کلان‌جرم</h3>
+        <p>
+            جرمی از میلیون‌ها تا میلیاردها برابر
+            خورشید دارد و معمولاً در مرکز کهکشان‌ها
+            یافت می‌شود.
+        </p>
+    </div>
+
+    <div class="card">
+        <div class="icon">🔭</div>
+        <h3>سیاه‌چاله میان‌جرم</h3>
+        <p>
+            جرمی بین سیاه‌چاله‌های ستاره‌ای و
+            کلان‌جرم دارد. شناسایی و مطالعه آن‌ها
+            همچنان ادامه دارد.
+        </p>
+    </div>
+
+    <div class="card">
+        <div class="icon">💫</div>
+        <h3>سیاه‌چاله نخستین</h3>
+        <p>
+            نوعی فرضی از سیاه‌چاله‌ها که ممکن است
+            در مراحل اولیه جهان، پس از مهبانگ،
+            تشکیل شده باشند.
+        </p>
+    </div>
+
+</div>
+</section>
+
+<!-- فیزیک -->
+
+<section id="physics">
+
+<div class="section-title">
+    <h2>فیزیک سیاه‌چاله‌ها</h2>
+    <p>The Physics of Black Holes</p>
+</div>
+
+<div class="content">
+
+    <div class="card">
+        <h3>۱. گرانش</h3>
+        <p>
+            گرانش نیروی جاذبه بین اجسام دارای جرم است.
+            هرچه جرم یک جسم بیشتر و فاصله کمتر باشد،
+            اثر گرانشی آن بیشتر می‌شود.
+            در نسبیت عام، گرانش به خمیدگی فضا-زمان
+            مربوط است.
+        </p>
+    </div>
+
+    <br>
+
+    <div class="card">
+        <h3>۲. سرعت گریز</h3>
+        <p>
+            سرعت گریز، سرعت لازم برای فرار از میدان
+            گرانشی یک جسم است. در نزدیکی افق رویداد
+            سیاه‌چاله، سرعت گریز به سرعت نور می‌رسد.
+        </p>
+    </div>
+
+    <br>
+
+    <div class="card">
+        <h3>۳. نسبیت عام</h3>
+        <p>
+            نظریه نسبیت عام اینشتین توضیح می‌دهد
+            که جرم و انرژی چگونه فضا-زمان را خم می‌کنند.
+            سیاه‌چاله‌ها یکی از شگفت‌انگیزترین
+            پیش‌بینی‌های این نظریه هستند.
+        </p>
+    </div>
+
+    <br>
+
+    <div class="card">
+        <h3>۴. اتساع زمان</h3>
+        <p>
+            هرچه به یک میدان گرانشی بسیار قوی
+            نزدیک‌تر شویم، زمان نسبت به ناظری دورتر
+            آهسته‌تر می‌گذرد.
+            این اثر در نزدیکی سیاه‌چاله بسیار چشمگیر است.
+        </p>
+    </div>
+
+    <br>
+
+    <div class="card">
+        <h3>۵. کشندی شدن یا اسپاگتی‌شدن</h3>
+        <p>
+            اختلاف گرانش بین قسمت‌های مختلف یک جسم
+            می‌تواند آن را در راستای سیاه‌چاله بکشد
+            و کشیده کند. به این پدیده Spaghettification
+            گفته می‌شود.
+        </p>
+    </div>
+
+    <br>
+
+    <div class="card">
+        <h3>۶. امواج گرانشی</h3>
+        <p>
+            هنگام برخورد و ادغام دو سیاه‌چاله،
+            موج‌هایی در ساختار فضا-زمان ایجاد می‌شوند
+            که امواج گرانشی نام دارند.
+        </p>
+    </div>
+
+    <div class="formula">
+        r = 2GM / c²
+    </div>
+
+    <p style="color:#b8c8df;text-align:center;font-size:13px">
+        شعاع شوارتزشیلد برای سیاه‌چاله غیرچرخان
+        <br>
+        G: ثابت گرانش | M: جرم | c: سرعت نور
+    </p>
+
+</div>
+</section>
+
+<!-- شیمی -->
+
+<section id="chemistry">
+
+<div class="section-title">
+    <h2>شیمی سیاه‌چاله‌ها</h2>
+    <p>The Chemistry of Black Holes</p>
+</div>
+
+<div class="grid content">
+
+    <div class="card">
+        <div class="icon">⚛️</div>
+        <h3>ترکیب مواد اطراف</h3>
+        <p>
+            گازهای اطراف سیاه‌چاله ممکن است شامل
+            هیدروژن، هلیوم و عناصر سنگین‌تری مانند
+            کربن، اکسیژن و آهن باشند.
+        </p>
+    </div>
+
+    <div class="card">
+        <div class="icon">🔥</div>
+        <h3>پلاسما</h3>
+        <p>
+            در دماهای بسیار بالا، اتم‌ها یونیده
+            می‌شوند و الکترون‌ها از هسته جدا می‌شوند.
+            در نتیجه ماده می‌تواند به حالت پلاسما درآید.
+        </p>
+    </div>
+
+    <div class="card">
+        <div class="icon">🧪</div>
+        <h3>واکنش‌های شیمیایی</h3>
+        <p>
+            در بخش‌های سردتر گاز و غبار اطراف،
+            مولکول‌هایی مانند هیدروژن و ترکیبات
+            دیگر می‌توانند وجود داشته باشند.
+        </p>
+    </div>
+
+    <div class="card">
+        <div class="icon">☀️</div>
+        <h3>همجوشی هسته‌ای</h3>
+        <p>
+            در ستاره‌های پرجرم، همجوشی هسته‌ای
+            باعث تبدیل عناصر سبک‌تر به عناصر
+            سنگین‌تر و تولید انرژی می‌شود.
+            این فرایند به پایان عمر ستاره ارتباط دارد.
+        </p>
+    </div>
+
+</div>
+
+<div class="content card" style="margin-top:25px">
+    <h3>آیا خود سیاه‌چاله از مواد شیمیایی تشکیل شده؟</h3>
+    <p>
+        سیاه‌چاله را نمی‌توان مانند یک ماده معمولی
+        با فرمول شیمیایی توصیف کرد. در خارج از افق
+        رویداد، ویژگی‌هایی مانند جرم، بار الکتریکی
+        و تکانه زاویه‌ای برای توصیف آن اهمیت دارند.
+        شیمی بیشتر به گاز و مواد اطراف آن مربوط است.
+    </p>
+</div>
+
+</section>
+
+<!-- ویدئو -->
+
+<section id="video">
+
+<div class="section-title">
+    <h2>ویدئوی علمی سیاه‌چاله‌ها</h2>
+    <p>Watch and Explore the Universe</p>
+</div>
+
+<div class="content">
+
+    <div class="video-box">
+        <iframe
+            src="https://www.youtube.com/embed/EJXTZ5jpSmk"
+            title="NASA - What is a Black Hole?"
+            allowfullscreen
+            loading="lazy">
+        </iframe>
+    </div>
+
+    <p style="text-align:center;color:#aab8d3;margin-top:20px">
+        ویدئوی رسمی ناسا: What is a Black Hole?
+    </p>
+
+</div>
+</section>
+
+<!-- حقایق -->
+
+<section>
+
+<div class="section-title">
+    <h2>حقایق شگفت‌انگیز</h2>
+    <p>Amazing Facts</p>
+</div>
+
+<div class="content">
+
+    <div class="fact">
+        🔹 سیاه‌چاله‌ها خودشان نور تولید نمی‌کنند،
+        اما مواد داغ اطرافشان می‌توانند بسیار درخشان باشند.
+    </div>
+
+    <div class="fact">
+        🔹 در مرکز کهکشان راه شیری سیاه‌چاله‌ای
+        کلان‌جرم به نام Sagittarius A* قرار دارد.
+    </div>
+
+    <div class="fact">
+        🔹 اولین تصویر مشهور از سایه یک سیاه‌چاله
+        در سال ۲۰۱۹ منتشر شد. این تصویر مربوط به M87* بود.
+    </div>
+
+    <div class="fact">
+        🔹 سیاه‌چاله‌ها مانند جاروبرقی همه‌چیز را
+        از فاصله دور نمی‌بلعند؛ گرانش آن‌ها مانند
+        سایر اجرام به جرم و فاصله بستگی دارد.
+    </div>
+
+    <div class="fact">
+        🔹 طبق نظریه هاوکینگ، سیاه‌چاله‌ها ممکن است
+        در اثر فرایندی کوانتومی تابش بسیار ضعیفی
+        منتشر کنند.
+    </div>
+
+</div>
+</section>
+
+<!-- منابع -->
+
+<section>
+
+<div class="section-title">
+    <h2>منابع علمی</h2>
+    <p>Scientific References</p>
+</div>
+
+<div class="content card">
+
+    <p>برای مطالعه بیشتر:</p>
+
+    <br>
+
+    <p>
+        <a href="https://science.nasa.gov/universe/black-holes/"
+        target="_blank" style="color:#48c6ff">
+        NASA - Black Holes
+        </a>
+    </p>
+
+    <p>
+        <a href="https://science.nasa.gov/universe/black-holes/anatomy/"
+        target="_blank" style="color:#48c6ff">
+        NASA - Anatomy of a Black Hole
+        </a>
+    </p>
+
+    <p>
+        <a href="https://eventhorizontelescope.org/"
+        target="_blank" style="color:#48c6ff">
+        Event Horizon Telescope
+        </a>
+    </p>
+
+</div>
+</section>
+
+<footer>
+
+    <h2 style="color:#39baff;direction:ltr">
+        BLACK HOLES
+    </h2>
+
+    <p>
+        سفری به اعماق ناشناخته جهان
+    </p>
+
+    <br>
+
+    <p>
+        Designed by <span>STARK WEB</span>
+    </p>
+
+    <p>
+        © 2026 - All Rights Reserved
+    </p>
+
+</footer>
+
+<script>
+
+// افکت ظاهر شدن کارت ها
+
+const cards = document.querySelectorAll('.card');
+
+const observer = new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+
+        if(entry.isIntersecting) {
+
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+
+            observer.unobserve(entry.target);
+        }
+
+    });
+
+}, {threshold: 0.12});
+
+cards.forEach(card => {
+
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(25px)';
+    card.style.transition = 'all .7s ease';
+
+    observer.observe(card);
+
+});
+
+</script>
+
+</body>
+</html>
